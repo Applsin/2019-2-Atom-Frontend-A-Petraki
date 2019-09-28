@@ -9,7 +9,13 @@
  function convertBytesToHuman(bytes) {
   // your solution goes here
   if(typeof(bytes) == 'number' && bytes >= 0){
-    return bytes
+    let i = -1
+    const byteUnits = [' KB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB']
+    do {
+      bytes /= 1024
+      i++
+  } while (bytes > 1024)
+    return Math.max(bytes,0.1).toFixed(2) + byteUnits[i]
   }
     return false
 }

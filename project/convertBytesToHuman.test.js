@@ -19,9 +19,10 @@ test('Возвращает false для неправильного типа да
 )
 
 test('Возвращает корректное значение для чисел', () => {
-  expect(convertBytesToHuman(1)).toBe(1)
-  expect(convertBytesToHuman(0)).toBe(0)
+  expect(convertBytesToHuman(1551859712)).toBe("1.45 GB")
+  expect(convertBytesToHuman(1024)).toBe("1.00 KB")
+  expect(convertBytesToHuman(123123123)).toBe("117.42 MB")
   expect(convertBytesToHuman(Infinity)).toBe(Infinity)
 })
 
-// другая группа проверок
+
