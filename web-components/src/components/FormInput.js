@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
@@ -30,25 +31,25 @@ template.innerHTML = `
 `;
 
 class FormInput extends HTMLElement {
-    constructor () {
-        super();
-        this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._shadowRoot.appendChild(template.content.cloneNode(true));
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
+    this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-        this.$input = this.shadowRoot.querySelector('input');
-    }
+    this.$input = this.shadowRoot.querySelector('input');
+  }
 
-    static get observedAttributes() {
-        return ['name', 'value', 'placeholder', 'disabled'];
-    }
+  static get observedAttributes() {
+    return ['name', 'value', 'placeholder', 'disabled'];
+  }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        this.$input.setAttribute(name, newValue);
-    }
+  attributeChangedCallback(name, oldValue, newValue) {
+    this.$input.setAttribute(name, newValue);
+  }
 
-    get value() {
-        return this.$input.value;
-    }
+  get value() {
+    return this.$input.value;
+  }
 }
 
 window.customElements.define('form-input', FormInput);

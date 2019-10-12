@@ -14,12 +14,6 @@ template.innerHTML = `
         align-items: center;
         justify-content: center;
     }
-    .backButton{
-        height: 30px;
-        width: 30px;
-        margin: 0px 15px;
-        background: url(https://image.flaticon.com/icons/svg/159/159769.svg)
-    }
     .chatInfo{
         flex: auto;
         height: 100%;
@@ -66,6 +60,12 @@ template.innerHTML = `
         margin: 5px 15px;
         background: url(https://image.flaticon.com/icons/svg/149/149404.svg)
     }
+    .backButton{
+        height: 30px;
+        width: 30px;
+        margin: 0px 15px;
+        background: url(https://image.flaticon.com/icons/svg/159/159769.svg)
+    }
     
 </style>
 <div class='backButton'></div>
@@ -78,8 +78,6 @@ template.innerHTML = `
 </div>
 <div class='searchButton'></div>
 <div class='settingsButton'>
-    <div class='Info'></div>
-    <div class='Mute'></div>
 </div>
 `;
 
