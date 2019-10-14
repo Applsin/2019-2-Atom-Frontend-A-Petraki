@@ -20,4 +20,5 @@ deploy:
   local_dir: web-components/build
   on:
     branch:
-      - homework2
+      - devel
+      - master
