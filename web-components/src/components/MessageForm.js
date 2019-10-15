@@ -83,10 +83,9 @@ class MessageForm extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: 'open' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$form = this._shadowRoot.querySelector('form');
-
     this.$input = this._shadowRoot.querySelector('form-input');
     this.$messagesList = this._shadowRoot.querySelector('.messagesList');
-
+    this.$dialogID = 0;
     this.$form.addEventListener('submit', this._onSubmit.bind(this));
     this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
     this.avatar = 'https://sun9-67.userapi.com/c854228/v854228593/11a0f9/ZxcsGQfVitg.jpg';
@@ -95,24 +94,27 @@ class MessageForm extends HTMLElement {
 
   _onSubmit(event) {
     event.preventDefault();
-
     if (this.$input.value.length > 0) {
       const $message = this.generateMessage();
-
-
       this.$input.$input.value = '';
       // $message.innerText = this.$input.value;
       this.$messagesList.appendChild($message);
       const [msgobj, idf] = $message.toObject();
       console.log((msgobj));
       console.log((idf));
-
-
-      localStorage.setItem(idf, JSON.stringify(msgobj));
+      let messages = JSON.parse(localStorage.getItem(this.$dialogID));
+      if (messages != null) {
+        messages.push(msgobj);
+        localStorage.setItem(this.$dialogID, JSON.stringify(messages));
+      } else {
+        messages = [];
+        messages.push(msgobj);
+        localStorage.setItem(this.$dialogID, JSON.stringify(messages));
+      }
     }
   }
 
-  generateMessage(senderName = 'Vladimir Carpa', text = this.$input.value, timestamp = null) {
+  generateMessage(senderName = 'name placeholder', text = this.$input.value, timestamp = null) {
     const message = document.createElement('message-item');
     if (timestamp) {
       message.setAttribute('time', timestamp);
@@ -124,21 +126,22 @@ class MessageForm extends HTMLElement {
   }
 
   connectedCallback() {
-    const keys = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (!isNaN(key)) {
-        keys.push(key);
-      }
-    }
-    keys.sort();
-    console.log(keys);
-    for (const key of keys) {
-      const msgObj = JSON.parse(localStorage.getItem(key));
+    // const keys = [];
+    const messages = JSON.parse(localStorage.getItem(this.$dialogID));
 
-      const $message = this.generateMessage(msgObj.name, msgObj.text, msgObj.timestamp);
-      // this.storage.push(this.generateMessage())
-      // this.$messagesList.appendChild()
+    // for (let i = 0; i < localStorage.length; i++) {
+    //   const key = localStorage.key(i);
+    //   if (!isNaN(key)) {
+    //     keys.push(key);
+    //   }
+    // }
+    // keys.sort();
+    // console.log(keys);
+    for (const key of messages) {
+      // console.log(JSON.stringify(key));
+      // const msgObj = JSON.stringify(key);
+      console.log(key);
+      const $message = this.generateMessage(key.name, key.text, key.timestamp);
       this.$messagesList.appendChild($message);
     }
   }
@@ -148,10 +151,6 @@ class MessageForm extends HTMLElement {
     if (event.keyCode === 13) {
       this.$form.dispatchEvent(new Event('submit'));
     }
-  }
-
-  renderList() {
-
   }
 }
 
