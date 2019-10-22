@@ -136,7 +136,6 @@ class MessageForm extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    // eslint-disable-next-line default-case
     switch (name) {
       case 'dialoguename':
         this.dialogueName = newValue;

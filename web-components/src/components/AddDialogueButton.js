@@ -25,7 +25,6 @@ class AddDialogueButton extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.$button = this.shadowRoot.querySelector('button');
-    // this.$identifier = this._shadowRoot.getElementById('identifier')
   }
 
   static openForm() {

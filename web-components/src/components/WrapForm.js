@@ -65,7 +65,7 @@ class WrapForm extends HTMLElement {
     this.$container = this.shadowRoot.querySelector('.container');
     this.$dialogForm = this.shadowRoot.querySelector('dialogue-form');
     this.$messageForm = this.shadowRoot.querySelector('message-form');
-
+    this.shadowRoot.addEventListener('renderDialogues', () => { console.log(123); this.openDialogueEvent(); });
     this.openDialogueEvent();
   }
 

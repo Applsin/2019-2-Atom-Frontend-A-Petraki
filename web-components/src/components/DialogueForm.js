@@ -9,7 +9,7 @@ template.innerHTML = `
             width: 100%;
             height: 100%;
             font-family: sans-serif;
-            background-color: #CFD0D1 ;
+            background-color: #fff ;
             display: flex;
             align-content: flex-end;
             flex-direction: column;
@@ -86,11 +86,16 @@ class DialogueForm extends HTMLElement {
     const dialogueObj = dialogue.toObject();
     localStorage.setItem('counter', this.dialoguesCounter);
     localStorage.setItem(`dialogue#${this.dialoguesCounter}-${person}`, JSON.stringify([dialogueObj]));
+
+    this.dispatchEvent(new CustomEvent('renderDialogues', {
+      bubbles: true,
+      composed: true,
+      detail: 'composed',
+    }));
   }
 
   renderDialogues() {
     this.dialoguesCounter = +localStorage.getItem('counter');
-    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key.includes('dialogue#')) {
