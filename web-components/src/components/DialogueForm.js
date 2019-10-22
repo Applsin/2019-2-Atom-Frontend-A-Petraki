@@ -22,7 +22,7 @@ template.innerHTML = `
         
         .dialogues {
             flex: auto;
-            align-content: flex-end;
+            align-content: flex-start;
             overflow-y: auto;
         }
         .dialoguesList{
