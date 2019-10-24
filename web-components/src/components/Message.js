@@ -1,46 +1,43 @@
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
-    
     :host {
         font-family: sans-serif;
         padding: 8px;
-        size : 120%;
+        
     }
     
-    .message{
+    .messageItem{
+      background-color: #ECA9D7;
         display: flex;
         flex-flow: column nowrap;
-        float: right;
         margin-right: 10px;
-        border-radius: 5px;
-        padding: 5px;
-        box-shadow: 0 0 2px 0 #151716;
-        max-width: 200%;
+        float: right;
+        border-radius: 8px;
+        padding: 10px;
+        max-width: 80%;
         word-break: break-word;
-        background-color: rgb(252, 208, 239);
     }
-   .message .text{
+    .messageItem .timestamp{
+      font-size: 10px;
+      padding: 4px 8px;
+      color: #999;
+      align-self: flex-end;
+  }
+   .messageItem .message{
+        background-color: #ECA9D7;
         padding: 4px 8px;
-        background-color: rgb(252, 208, 239);
-        border-radius: .2em;
         color: #000;
    }
-    .message .time{
-        font-size: 10px;
-        padding: 4px 8px;
-        color: #999;
-        align-self: flex-end;
-    }
-    .message .name{
+    .messageItem .name{
         display: none;
     }
     
 </style>
-<div class="message">
+<div class="messageItem">
     <div class='name'></div>
-    <div class='text'></div>
-    <div class='time'></div>
+    <div class='message'></div>
+    <div class='timestamp'></div>
 </div>
 `;
 
@@ -50,21 +47,23 @@ class MessageItem extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: 'open' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.$message = this._shadowRoot.querySelector('.message');
+    this.$messageItem = this._shadowRoot.querySelector('.message');
 
     this.$name = this._shadowRoot.querySelector('.name');
-    this.$text = this._shadowRoot.querySelector('.text');
-    this.$timestamp = this._shadowRoot.querySelector('.time');
+    this.$message = this._shadowRoot.querySelector('.message');
+    this.$timestamp = this._shadowRoot.querySelector('.timestamp');
+    // this.$identifier = this._shadowRoot.getElementById('identifier')
   }
 
   static get observedAttributes() {
-    return ['name', 'text', 'timestamp'];
+    return ['name', 'message', 'timestamp'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
+    // eslint-disable-next-line default-case
     switch (name) {
-      case 'text':
-        this._text = newValue;
+      case 'message':
+        this._message = newValue;
         break;
       case 'name':
         this._name = newValue;
@@ -77,35 +76,30 @@ class MessageItem extends HTMLElement {
   }
 
   connectedCallback() {
-    if (!this.hasAttribute('text')) {
-      this.setAttribute('text', 'placeholder');
-    }
-
     this._renderMessage();
   }
 
   toObject() {
     this.messageObject = {
       name: this.$name.innerHTML,
-      text: this.$text.innerHTML,
+      message: this.$message.innerHTML,
       timestamp: this.$timestamp.innerHTML,
     };
-    return [this.messageObject, this.identifier];
+    return this.messageObject;
   }
 
   _renderMessage() {
     this.$name.innerHTML = this._name;
-    this.$text.innerHTML = this._text;
+    this.$message.innerHTML = this._message;
     const time = new Date();
     if (this._timestamp) {
-      this.$timestamp = this._timestamp;
+      this.$timestamp.innerHTML = this._timestamp;
     } else {
       this.$timestamp.innerHTML = time.toLocaleString('ru', {
         hour: 'numeric',
         minute: 'numeric',
       });
     }
-    this.identifier = Date.parse(time) + (Math.random() * 1000);
   }
 }
 

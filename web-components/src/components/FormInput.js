@@ -1,38 +1,44 @@
-/* eslint-disable no-underscore-dangle */
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
         :host {
             display: flex;
             flex-direction: row;
-            height: 52px;
-            padding-left: 10px;
-            padding-right: 10px;
+            height: 50px;
+            box-sizing: border-box;
+            background-color: #F7F8FA;
         }
         input {
             border: 0;
-            outline: none;
+            outline: 0;
             width: 100%;
             height: 100%;
             background-color: transparent;
         }
-        .searchButton{
-            height: 53px;
-            background: url(static/images/sprait_1.png) no-repeat center center;
-            background-size: 100%;
-            border: 10px;
-            justify-content: flex-end;
-            padding-right: 30px;
-            background-color: transparent;
-          }
+        .clip {
+            height: 32px;
+            width: 40px;
+            margin: 5px 15px;
+            background: url(https://image.flaticon.com/icons/svg/116/116312.svg);
+            background-repeat: no-repeat;
+        }
+        .send {
+            height: 32px;
+            width: 40px;
+            margin: 5px 15px;
+            background: url(https://image.flaticon.com/icons/svg/1059/1059106.svg);
+            background-repeat: no-repeat;
+        }
     </style>
+    <div class='clip'></div>
     <input type="text">
-    <div class='searchButton'></div>
+    <div class='send'></div>
 `;
 
 class FormInput extends HTMLElement {
   constructor() {
     super();
+    // eslint-disable-next-line no-underscore-dangle
     this._shadowRoot = this.attachShadow({ mode: 'open' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 

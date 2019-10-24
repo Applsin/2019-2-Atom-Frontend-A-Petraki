@@ -3,16 +3,21 @@ template.innerHTML = `
 <style>
     *{
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
     }
     :host {
-        height: 60px;
+        background-color: #F498D8;
         display: flex;
         flex-direction: row;
         font-family: sans-serif;
         align-items: center;
         justify-content: center;
+        position: relative;
+    }
+    .backButton{
+        height: 30px;
+        width: 30px;
+        margin: 5px 15px;
+        background: url(https://image.flaticon.com/icons/svg/156/156887.svg)
     }
     .chatInfo{
         flex: auto;
@@ -28,52 +33,40 @@ template.innerHTML = `
         width: 30px;
         margin: 5px 15px;   
         border-radius: 50%;      
-        background: url(https://assets.dryicons.com/uploads/icon/svg/5608/9446101f-27b4-4f8f-9761-0397d7ea932e.svg);
+        background: url(https://image.flaticon.com/icons/svg/149/149452.svg);
     }
-    .userInfo {
+    .senderInfo {
         display: flex;
         flex-flow: column wrap;
         height: 100%;
-        color: #ffffff;
         justify-content: center;
         align-conten: center;
         align-items: center;
         
     }
-
-    .userInfo .user {
-        font-size: 1.0em;
-    }
-
-    .userInfo .status {
-        font-size: 0.9em;
-    }
     .searchButton{
         height: 20px;
         width: 20px;
         margin: 5px 15px;
-        background: url(https://image.flaticon.com/icons/svg/149/149309.svg)
+        background: url(https://image.flaticon.com/icons/svg/932/932384.svg) no-repeat center center;
+        background-size: contain
     }
+    
     .settingsButton{
         height: 20px;
         width: 20px;
         margin: 5px 15px;
-        background: url(https://image.flaticon.com/icons/svg/149/149404.svg)
-    }
-    .backButton{
-        height: 30px;
-        width: 30px;
-        margin: 0px 15px;
-        background: url(https://image.flaticon.com/icons/svg/159/159769.svg)
+        background: url(https://image.flaticon.com/icons/svg/149/149176.svg) no-repeat center center;
+        background-size: contain
     }
     
 </style>
 <div class='backButton'></div>
 <div class='chatInfo'>
     <div class='avatar'></div>
-    <div class='userInfo'>
-        <div class='user'>Alexander Petraki</div>
-        <div class='status'>status placeholder</div>
+    <div class='senderInfo'> 
+        <div class='name'>Username placeholder.</div>
+        <div class='lastTime'>status placeholder</div>
     </div>
 </div>
 <div class='searchButton'></div>
@@ -81,21 +74,20 @@ template.innerHTML = `
 </div>
 `;
 
-class DialogInformation extends HTMLElement {
+
+class ChatHeader extends HTMLElement {
   constructor() {
     super();
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
+    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    this.$backButton = this.shadowRoot.querySelector('.backButton');
 
-    this.shadowRoot = this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.$backButton.addEventListener('click', this.backButtonClick.bind(this));
   }
 
-  /* static get observedAttributes() {
-      return ['name', 'value', 'placeholder', 'disabled'];
+  backButtonClick() {
+    this.dispatchEvent(new Event('backButtonClick'));
   }
-  attributeChangedCallback(name, oldValue, newValue) {
-      if(name == "value") this.$input.value = newValue;
-      this.$input.setAttribute(name, newValue);
-  } */
 }
 
-customElements.define('chat-header', DialogInformation);
+customElements.define('chat-header', ChatHeader);
