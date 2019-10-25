@@ -21,6 +21,11 @@ template.innerHTML = `
             margin: 5px 15px;
             background: url(https://image.flaticon.com/icons/svg/116/116312.svg);
             background-repeat: no-repeat;
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+        .clip:hover {
+          transform: scale(0.8);
         }
         .send {
             height: 32px;
@@ -28,6 +33,11 @@ template.innerHTML = `
             margin: 5px 15px;
             background: url(https://image.flaticon.com/icons/svg/1059/1059106.svg);
             background-repeat: no-repeat;
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+        .send:hover {
+          transform: scale(0.8);
         }
     </style>
     <div class='clip'></div>

@@ -5,6 +5,7 @@ template.innerHTML = `
     height: 100vh;
     width: 100vw;
     position: relative;
+    overflow: hidden;
   }
   .wrapper *{
     position: absolute;

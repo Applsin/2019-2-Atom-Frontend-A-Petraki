@@ -3,7 +3,7 @@ template.innerHTML = `
 <style>
     :host {
         font-family: sans-serif;
-        padding: 8px;
+        padding: 1px;
         color: #000;
         box-sizing: border-box;
     }
@@ -11,11 +11,14 @@ template.innerHTML = `
     .dialogue {
         width: 100%;
         display: flex;
-        
+        cursor: pointer;
+    }
+    .dialogue:hover {
+        background-color: #f5f6f7;
     }
     .dialogue .avatar{
-        height: 60px;
-        width: 60px;
+        height: 50px;
+        width: 50px;
         margin-right: 10px;
         border-radius: 50%; 
         flex-shrink: 0;
@@ -26,7 +29,7 @@ template.innerHTML = `
     .dialogue .wrapper{
         flex: auto;
         padding: 0px 0px 0px 10px;
-        border-bottom: 0.5px solid #4f4f4f;
+        
         height:100%;
         
     }
