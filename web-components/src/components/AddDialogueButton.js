@@ -13,6 +13,46 @@ template.innerHTML = `
         width: 40px;
         background: url(https://image.flaticon.com/icons/svg/1034/1034138.svg);
         margin: 0px 10px 10px 0px;
+        animation-name: pencil;
+        animation-duration: 2.5s;
+        animation-delay: 0.3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    @keyframes pencil{
+      from{
+        transform: rotate(0deg);
+      }
+      7.5%{
+        
+        transform: rotate(15deg);
+      }
+      15%{
+       
+        transform: rotate(-15deg);
+        
+      }
+      22.5%{
+       
+        transform: rotate(7.5deg);
+        
+      }
+      30%{
+        
+        transform: rotate(-7.5deg);
+      }
+      37.5%{
+        
+        transform: rotate(3.25deg);
+      }
+      45%{
+        
+        transform: rotate(-3.25deg);
+      }
+      50%{
+        
+        transform: rotate(0deg);
+      }
     }
 </style>
 <button class='createDialogueButton'></button>

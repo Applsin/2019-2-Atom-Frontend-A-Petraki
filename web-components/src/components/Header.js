@@ -17,6 +17,7 @@ template.innerHTML = `
         height: 30px;
         width: 30px;
         margin: 5px 15px;
+        cursor: pointer;
         background: url(https://image.flaticon.com/icons/svg/156/156887.svg)
     }
     .chatInfo{
