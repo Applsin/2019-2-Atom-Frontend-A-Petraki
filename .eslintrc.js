@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es6: true,
+    node: true,
   },
   extends: 'airbnb-base',
   globals: {
@@ -21,5 +22,6 @@ module.exports = {
     semi: 1,
     'default-case': 1,
     'no-case-declarations': 1,
+    'eslint-disable-next-line': 1,
   },
 };

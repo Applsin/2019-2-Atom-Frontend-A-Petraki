@@ -1,38 +1,6 @@
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
-    :host {
-        font-family: sans-serif;
-        padding: 8px;
-        
-    }
-    
-    .messageItem{
-      background-color: #ECA9D7;
-        display: flex;
-        flex-flow: column nowrap;
-        margin-right: 10px;
-        float: right;
-        border-radius: 8px;
-        padding: 10px;
-        max-width: 80%;
-        word-break: break-word;
-    }
-    .messageItem .timestamp{
-      font-size: 10px;
-      padding: 4px 8px;
-      color: #999;
-      align-self: flex-end;
-  }
-   .messageItem .message{
-        background-color: #ECA9D7;
-        padding: 4px 8px;
-        color: #000;
-   }
-    .messageItem .name{
-        display: none;
-    }
-    
 </style>
 <div class="messageItem">
     <div class='name'></div>

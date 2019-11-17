@@ -1,44 +1,6 @@
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
-        :host {
-            display: flex;
-            flex-direction: row;
-            height: 50px;
-            box-sizing: border-box;
-            background-color: #F7F8FA;
-        }
-        input {
-            border: 0;
-            outline: 0;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-        }
-        .clip {
-            height: 32px;
-            width: 40px;
-            margin: 5px 15px;
-            background: url(https://image.flaticon.com/icons/svg/116/116312.svg);
-            background-repeat: no-repeat;
-            transition: transform 0.5s;
-            cursor: pointer;
-        }
-        .clip:hover {
-          transform: scale(0.8);
-        }
-        .send {
-            height: 32px;
-            width: 40px;
-            margin: 5px 15px;
-            background: url(https://image.flaticon.com/icons/svg/1059/1059106.svg);
-            background-repeat: no-repeat;
-            transition: transform 0.5s;
-            cursor: pointer;
-        }
-        .send:hover {
-          transform: scale(0.8);
-        }
     </style>
     <div class='clip'></div>
     <input type="text">
