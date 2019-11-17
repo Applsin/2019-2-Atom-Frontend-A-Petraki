@@ -1,6 +1,4 @@
-*{
-    box-sizing: border-box;
-}
+
 .header {
     background-color: #F498D8;
     display: flex;
@@ -11,6 +9,7 @@
     position: relative;
     z-index: 1;
 }
+
 .menuButton{
     height: 30px;
     width: 30px;
@@ -18,6 +17,7 @@
     background: url(https://image.flaticon.com/icons/svg/149/149176.svg) no-repeat center center;
     background-size: contain
 }
+
 .searchButton{
     height: 30px;
     width: 30px;
@@ -26,6 +26,7 @@
     background: url(https://image.flaticon.com/icons/svg/932/932384.svg) no-repeat center center;
     background-size: contain
 }  
+
 .messenger{
     flex: auto;
     height: 100%;
