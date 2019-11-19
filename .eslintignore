@@ -9,3 +9,4 @@ src/store/
 src/routes/
 src/containers/
 src/**/__tests__/**
+src/index.js
