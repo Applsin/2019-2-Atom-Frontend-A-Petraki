@@ -4,7 +4,7 @@ build/
 !.eslintrc.js
 src/registerServiceWorker.js
 src/tests/
-src/util/
+src/utils/
 src/store/
 src/routes/
 src/containers/
