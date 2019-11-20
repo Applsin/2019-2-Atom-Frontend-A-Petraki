@@ -3,5 +3,10 @@ node_modules/
 build/
 !.eslintrc.js
 src/registerServiceWorker.js
-src/utils/serviceWorker.js
+src/tests/
+src/utils/
+src/store/
+src/routes/
+src/containers/
 src/**/__tests__/**
+src/index.js

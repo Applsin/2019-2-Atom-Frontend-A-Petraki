@@ -98,10 +98,10 @@ bower_components
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
-
+build/
+fill.js
 # Dependency directories
 node_modules/
-web-components/node_modules/
 jspm_packages/
 
 # Typescript v1 declaration files
@@ -135,7 +135,7 @@ dist/
 #### eslint ####
 # These rules are required to lint .eslintrc.js and friends.
 # It is not related to git in any manner.
-# !.eslintrc.js
+!.eslintrc.js
 !stylelint.config.js
 !.remarkrc.js
 

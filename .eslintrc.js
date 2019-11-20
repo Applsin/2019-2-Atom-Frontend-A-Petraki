@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es6: true,
+    node: true,
   },
   extends: 'airbnb-base',
   globals: {
@@ -19,7 +20,7 @@ module.exports = {
     'no-restricted-globals': 1,
     'no-plusplus': 1,
     semi: 1,
+    'import/prefer-default-export': 'off',
     'default-case': 1,
-    'no-case-declarations': 1,
   },
 };

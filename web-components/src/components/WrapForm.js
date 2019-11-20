@@ -1,54 +1,6 @@
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
-  .wrapper{
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    overflow: hidden;
-  }
-  .wrapper *{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    z-index: 0;
-  }
-  message-form{
-    z-index: 1;
-    right: -100%;
-    animation-duration: 0.3s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-  }
-  message-form.appear{
-    animation-name: chatAppear;
-  }
-  message-form.disappear{
-    animation-name: chatDisappear;
-  }
-
-  @keyframes chatAppear{
-    from{
-      right: -100%;
-    }
-    to{
-      right: 0;
-    }
-  }
-  
-  @keyframes chatDisappear{
-    from{
-      right: 0;
-    }
-    to{
-      right: -100%;
-    }
-  }
-    
-  ::-webkit-scrollbar {
-    width: 0px;
-  }
 </style>
 <div class="wrapper">
   <dialogue-form></dialogue-form>

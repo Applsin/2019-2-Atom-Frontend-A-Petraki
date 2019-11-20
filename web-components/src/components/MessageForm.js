@@ -1,55 +1,6 @@
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
-        
-        :host {
-            width: 100%;
-            height: 100%;
-            font-family: sans-serif;
-            background-color: #CFD0D1 ;
-            display: flex;
-            flex-direction: column;
-        }
-        .header{
-            width: 100%;
-            background-color: #29384B;
-            z-index: 1;
-        }
-        
-        .chat {
-            width: 100%;
-            display: flex;
-            flex: auto;
-            flex-direction: column-reverse;
-            align-content: flex-end;
-            z-index: 0;
-            overflow-y: auto;
-        }
-        .messagesList{
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: flex-end;
-            flex-direction: column;
-        }
-        .message-item{
-            box-sizing: border-box;
-            width: 100%;
-            padding: 0 10px 20px 10px;
-        }
-        .inputFrom {
-            width: 100%;
-            background-color: #F7F8FA;
-            
-            z-index: 1;
-        }
-        ::-webkit-scrollbar{
-            width: 0px;
-        }
-        
-        input[type=submit] {
-            visibility: visible;
-        }
     </style>
     
     <div class='header'>
