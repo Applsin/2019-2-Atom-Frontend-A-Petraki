@@ -5,7 +5,6 @@ import { Profile } from './Profile';
 import MyContext from './MyContext.Context';
 import styles from '../styles/MainForm.module.css';
 
-
 export class WrapForm extends React.Component {
   constructor(props) {
     super(props);
