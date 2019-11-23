@@ -34,6 +34,7 @@
 }
 
 .senderInfo {
+    color: #fff;
     display: flex;
     flex-flow: column wrap;
     height: 100%;

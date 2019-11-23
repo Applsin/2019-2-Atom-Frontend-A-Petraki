@@ -1,11 +1,11 @@
 .wrap {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0 10px 20px 10px;
-}
-
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px 20px 10px;
+  }
+  
 .messageItem{
-  background-color: #ECA9D7;
+    background-color: #F498D8;
     display: flex;
     flex-flow: column nowrap;
     margin-right: 10px;
@@ -15,21 +15,21 @@
     margin: 5px;
     max-width: 80%;
     word-break: break-word;
-}
-
+  }
+  
 .timestamp{
-  font-size: 10px;
-  padding: 4px 8px;
-  color: #999;
-  align-self: flex-end;
-}
-
-.message{
-    background-color: #ECA9D7;
+    font-size: 10px;
     padding: 4px 8px;
-    color: #000;
+    color: #fff;
+    align-self: flex-end;
+  }
+  
+.message{
+    background-color: #F498D8;
+    padding: 4px 8px;
+    color: #fff;
 }
-
+  
 .name{
-    display: none;
+      display: none;
 }
