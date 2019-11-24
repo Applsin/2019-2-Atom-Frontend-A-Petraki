@@ -1,4 +1,3 @@
-
 .header {
     background-color: #F498D8;
     display: flex;
@@ -28,6 +27,7 @@
 }  
 
 .messenger{
+    color: #fff;
     flex: auto;
     height: 100%;
     padding-left: 20px;

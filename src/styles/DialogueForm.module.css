@@ -24,7 +24,6 @@
 	width: 100%;
 	text-align: center;
 	padding-top: 40vh;
-	font-size: var(--fontMinSize);
+	font-size: 0.9em;
 	color: #4c4c4d;
 }
-
