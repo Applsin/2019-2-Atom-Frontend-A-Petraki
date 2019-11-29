@@ -15,12 +15,9 @@
 
 .messagesList{
     width: 100%;
-    height:100%;
     display: flex;
     flex-wrap: wrap;
-     
-    overflow-y: auto;
-    
+    /* overflow-y: scroll; */
 }
 
 .header {
@@ -31,12 +28,13 @@
 
 .chat {
     width: 100%;
+    height: 100%;
     display: flex;
+    flex: auto;
+    flex-direction: column-reverse;
+    align-content: flex-end;
     z-index: 0;
-    flex-direction: column-reverse; 
-    align-items: flex-end;
     overflow-y: auto;
-    
 }
 
 .inputForm {
