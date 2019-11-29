@@ -2,24 +2,25 @@
     width: 100%;
     height: 100%;
     font-family: sans-serif;
-    background-color: #ffffff ;
+    background-color: #F7F8FA;
     display: flex;
     flex-direction: column;
     position: absolute;
     z-index: 1;
     right: -100%;
-    animation-duration: 0.3s;
+    animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 
 .messagesList{
     width: 100%;
+    height:100%;
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-end;
-    flex-direction: column;
-
+     
+    overflow-y: auto;
+    
 }
 
 .header {
@@ -31,15 +32,43 @@
 .chat {
     width: 100%;
     display: flex;
-    flex: auto;
-    flex-direction: column-reverse;
-    align-content: flex-end;
     z-index: 0;
+    flex-direction: column-reverse; 
+    align-items: flex-end;
     overflow-y: auto;
+    
 }
 
 .inputForm {
     width: 100%;
     background-color: #F7F8FA;
     z-index: 1;
+}
+
+.dragNDropArea {
+    width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 0;
+	opacity: 0;
+	background-color: #191919;
+	transition-duration: 0.2s;
+	padding: 15px;
+    display: flex;    
+    justify-content: center;
+}
+
+.activeZone {
+	z-index: 1;
+	opacity: 0.9;
+}
+
+.dragNDropImage {
+    align-self: center;
+    height: 300px;
+	max-width: 100%;
+	min-width: 180px;
+    background-image: url(https://image.flaticon.com/icons/svg/176/176040.svg);
+    background-repeat: no-repeat;
+	background-position: center center;
 }

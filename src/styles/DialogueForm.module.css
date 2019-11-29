@@ -9,10 +9,9 @@
 	position: absolute;
 	overflow: hidden;
 	z-index: 0;
-
 }
 
-.dialoguesList{
+.dialogueList{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -27,3 +26,16 @@
 	font-size: 0.9em;
 	color: #4c4c4d;
 }
+
+/*
+.dialogue-item{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    padding: 0 10px 20px 10px;
+    cursor: pointer;
+}
+
+.dialogue-item:hover{
+    background-color: #2587e8;
+}*/

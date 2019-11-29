@@ -1,11 +1,19 @@
+/* eslint-disable no-console */
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/named */
+/* eslint-disable no-alert */
 import React from 'react';
 import { DialogueForm } from './DialogueForm';
 import { MessageForm } from './MessageForm';
 import { Profile } from './Profile';
 import MyContext from './MyContext.Context';
+import { recordStream } from '../lib/recordStream';
 import styles from '../styles/MainForm.module.css';
 
-export class WrapForm extends React.Component {
+
+export class MainForm extends React.Component {
   constructor(props) {
     super(props);
     const storage = this.parseStorage();
@@ -14,6 +22,7 @@ export class WrapForm extends React.Component {
       messages: storage.messages,
       chatCounter: storage.chatCounter,
       currentDialogue: null,
+      mediaRecorder: null,
       frameStyles: {
         MessageForm: null,
         Profile: null,
@@ -21,6 +30,7 @@ export class WrapForm extends React.Component {
     };
   }
 
+  // eslint-disable-next-line class-methods-use-this
   parseStorage() {
     const storage = {
       chats: JSON.parse(localStorage.getItem('chats')),
@@ -33,6 +43,19 @@ export class WrapForm extends React.Component {
       storage.chatCounter = 0;
     }
     return storage;
+  }
+
+  async requireRecorder() {
+    if (this.state.mediaRecorder) {
+      return this.state.mediaRecorder;
+    }
+
+    return recordStream().then((value) => {
+      this.setState({ mediaRecorder: value });
+      return value;
+    }).catch((err) => {
+      throw new Error(err);
+    });
   }
 
   openDialogue(chatId) {
@@ -52,7 +75,7 @@ export class WrapForm extends React.Component {
       Object.keys(state.frameStyles).forEach((index) => {
         state.frameStyles[index] = {
           animationName: styles.chatDisappear,
-        }
+        };
       });
     } else {
       state.frameStyles[frame] = {
@@ -64,8 +87,9 @@ export class WrapForm extends React.Component {
     }
   }
 
-  messageHandler(value, chatTimestamp = null, chatId = null) {
+  messageHandler(value, chatTimestamp = null, chatId = null, attachments = null) {
     let { currentDialogue, messages } = this.state;
+    let isAttached = false;
     if (!messages) {
       messages = {};
     }
@@ -73,7 +97,6 @@ export class WrapForm extends React.Component {
       currentDialogue = chatId;
       messages[currentDialogue - 1] = [];
     }
-
     const message = {
       id: 'test',
       content: value,
@@ -81,15 +104,31 @@ export class WrapForm extends React.Component {
       time: chatTimestamp || new Date(),
       status: 'sent',
     };
+    if (attachments) {
+      message.attachments = attachments;
+      isAttached = true;
+
+      const data = new FormData();
+      data.append(Attr.type, attachments.file);
+
+      fetch('https://tt-front.now.sh/upload', {
+        method: 'POST',
+        body: data,
+      }).then(() => {
+        // pass
+      }).catch(console.log);
+    }
     messages[currentDialogue - 1].push(message);
     this.setState(messages);
     if (!chatId) {
       this.setLastMessage();
     }
+
     localStorage.setItem('messages', JSON.stringify(messages));
   }
 
   createHandler() {
+    // eslint-disable-next-line prefer-const
     let { chats, chatCounter } = this.state;
     const name = prompt("Enter person's name");
     const text = prompt('Write a message');
@@ -100,7 +139,7 @@ export class WrapForm extends React.Component {
       id: chatCounter,
       title: name,
       is_group: false,
-      host: 'test host',
+      host: 'Vladimir Carpa',
       lastMessage: chatMsgs[chatMsgs.length - 1],
 
     });
@@ -137,7 +176,6 @@ export class WrapForm extends React.Component {
     switch (true) {
       case /chat\/\d\/?$/.test(path):
         const chatId = parseInt(path.match(/\d+/), 10);
-        console.log(chatId)
         this.openDialogue(chatId);
         break;
       case /profile\/\d\/?$/.test(path):

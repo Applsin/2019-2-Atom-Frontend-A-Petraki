@@ -1,9 +1,7 @@
-export async function startRecord(
-  mediaRecorder,
+export async function startRecord(mediaRecorder,
   callbackStart = null,
   callbackEnd = null,
-  callbackSuccess = null,
-) {
+  callbackSuccess = null) {
   if (mediaRecorder) {
     mediaRecorder.start();
 
@@ -11,11 +9,11 @@ export async function startRecord(
 
     let chunks = [];
     mediaRecorder.addEventListener('stop', () => {
-      const obj = new Blob(chunks, { type: mediaRecorder.mimeType });
-      const audioURL = URL.createObjectURL(obj);
+      const blob = new Blob(chunks, { type: mediaRecorder.mimeType });
+      const audioURL = URL.createObjectURL(blob);
       chunks = [];
 
-      if (callbackSuccess) { callbackSuccess(audioURL, obj); }
+      if (callbackSuccess) { callbackSuccess(audioURL, blob); }
     });
 
     mediaRecorder.addEventListener('dataavailable', (event) => {
@@ -28,5 +26,6 @@ export function endRecord(mediaRecorder, callback = null) {
   if (mediaRecorder) {
     mediaRecorder.stop();
   }
+
   if (callback) { callback(); }
 }

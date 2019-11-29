@@ -9,12 +9,19 @@
     z-index: 1;
 }
 
-.menuButton{
+.menuBurger{
     height: 30px;
     width: 30px;
     margin: 5px 15px;
     background: url(https://image.flaticon.com/icons/svg/149/149176.svg) no-repeat center center;
     background-size: contain
+}
+
+.messenger{
+    flex: auto;
+    padding-left: 20px;
+    font-size: 20px;
+    color: #fff;
 }
 
 .searchButton{
@@ -25,10 +32,3 @@
     background: url(https://image.flaticon.com/icons/svg/932/932384.svg) no-repeat center center;
     background-size: contain
 }  
-
-.messenger{
-    color: #fff;
-    flex: auto;
-    height: 100%;
-    padding-left: 20px;
-}

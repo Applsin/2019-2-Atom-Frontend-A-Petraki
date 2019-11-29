@@ -3,11 +3,12 @@ import { render } from 'react-dom';
 import './styles/globalStyles.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import * as serviceWorker from './utils/serviceWorker';
-import { WrapForm } from './components/WrapForm'
+import { MainForm } from './components/MainForm'
+import './index.css';
 
 render(
   <BrowserRouter>
-    <Route path='/' component={WrapForm} />
+    <Route path='/' component={MainForm} />
   </BrowserRouter>,
   document.getElementById('root'),
 );
