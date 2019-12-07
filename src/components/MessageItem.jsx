@@ -51,7 +51,7 @@ function Attachment(props) {
         latitude,
         longitude,
       } = props.attachment;
-      const staticMap = `https://static-maps.yandex.ru/1.x/?ll=${longitude},${latitude}&size=300,300&z=10&l=map&pt=${longitude},${latitude},pmwtm1`
+      const staticMap = `https://static-maps.yandex.ru/1.x/?ll=${longitude},${latitude}&spn=0.016457,0.00619&l=map&size=300,300`;
       const addStyle = {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',

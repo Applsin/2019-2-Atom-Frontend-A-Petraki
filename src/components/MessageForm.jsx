@@ -42,9 +42,9 @@ export function MessageForm(props) {
               onDragLeave={dragLeave}
               style={style}
               className={styles.messageForm}>
-              <div className={`${styles.dragNDropArea} ${dragActive && styles.activeZone}`}>
-                  <div className={styles.dragNDropImage} />
-              </div>
+              <input className={`${styles.dragNDropArea} ${dragActive && styles.activeZone}`} type="file" accept="image/*">
+                  {/* <div className={styles.dragNDropImage} /> */}
+              </input>
               <MyContext.Consumer>
                   {(value) => (
                       <ChatHeader

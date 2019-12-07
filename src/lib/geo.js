@@ -10,7 +10,7 @@ export function geo(callbackSuccess, callbackError = null) {
 
     navigator.geolocation.getCurrentPosition(
       callbackSuccess,
-      console.log,
+      callbackError,
       geoOptions,
     );
   } else if (callbackError) { callbackError('Permisition denied'); }

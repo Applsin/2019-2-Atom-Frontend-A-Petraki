@@ -72,11 +72,11 @@ export function FormInput(props) {
     }
   };
 
-  if (recording) {
-    if (sendButtonType !== 'cancel') { setSendButtonType('cancel'); }
-  } else if ((input.current && input.current.value !== '') || attachments) {
+  
+  if (recording && sendButtonType !== 'cancel') { setSendButtonType('cancel'); }
+  else if (!recording && (input.current && input.current.value !== '') || attachments) {
     if (sendButtonType !== 'send') { setSendButtonType('send'); }
-  } else if (sendButtonType !== 'mic') { setSendButtonType('mic'); }
+  } else if (!recording && sendButtonType !== 'mic') { setSendButtonType('mic'); }
 
   const imageUploader = (event, callbackSuccess, callbackError = null) => {
     let additionsList = event.target.files;
@@ -150,6 +150,7 @@ export function FormInput(props) {
             onKeyPress={onKeyPress}
             ref={input}
             placeholder='Enter message...' />
+
           <SendButton
             cancel={() => {
               endRecord(mediaRecorder, () => {
@@ -180,9 +181,9 @@ export function FormInput(props) {
 
             submit={onSubmit}
             type={sendButtonType}/>
+
           <div className={styles.dropOut} style={dropOutStyle}>
             <div className={styles.dropOutContainer}>
-              
               <div
                 onClick={() => {
                   setDropOutStyle(null);
@@ -207,15 +208,15 @@ export function FormInput(props) {
                 onClick={() => {
                   setDropOutStyle(null);
                   geo((position) => {
-                    const { width, length } = position.coords;
-                    const response = `https://yandex.ru/maps/?ll=${length}%2C${width}&z=0`;
+                    const { latitude, longitude } = position.coords;
+                    const response = `https://yandex.ru/maps/?ll=${longitude}%2C${latitude}&z=15`;
                     setAttachments({
                       type: 'geolocation',
                       list: [
                         {
                           path: response,
-                          width,
-                          length,
+                          latitude,
+                          longitude,
                         },
                       ],
                     });
