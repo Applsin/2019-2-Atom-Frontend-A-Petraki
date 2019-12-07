@@ -74,7 +74,7 @@ export function FormInput(props) {
 
   
   if (recording && sendButtonType !== 'cancel') { setSendButtonType('cancel'); }
-  else if (!recording && (input.current && input.current.value !== '') || attachments) {
+  else if ((!recording && (input.current && input.current.value !== '')) || attachments) {
     if (sendButtonType !== 'send') { setSendButtonType('send'); }
   } else if (!recording && sendButtonType !== 'mic') { setSendButtonType('mic'); }
 
