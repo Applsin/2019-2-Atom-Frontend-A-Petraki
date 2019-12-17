@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/named */
 import React from 'react';
 import styles from '../styles/DialogueForm.module.css';
-import { DialogueHeader } from './DialogueHeader';
+import { DialoguesHeader } from './DialoguesHeader';
 import { DialogueItem } from './DialogueItem';
-import { AddDialogueButton } from './AddDialogueButton';
+import { CreateDialogueButton } from './CreateDialogueButton';
 import MyContext from './MyContext.Context';
 
+// eslint-disable-next-line import/prefer-default-export
 export function DialogueForm(props) {
   const { chats } = props;
 
@@ -19,16 +22,16 @@ export function DialogueForm(props) {
   }
 
   return (
-    <div className={styles.dialogues}>
-        <DialogueHeader />
-        <div className={styles.dialogueList}>
-            {dialogues}
+        <div className={styles.dialogues}>
+            <DialoguesHeader />
+            <div className={styles.dialogueList}>
+                {dialogues}
+            </div>
+            <MyContext.Consumer>
+                {(value) => (
+                    <CreateDialogueButton createHandler={value.createHandler.bind(value)}/>
+                )}
+            </MyContext.Consumer>
         </div>
-        <MyContext.Consumer>
-            {(value) => (
-                <AddDialogueButton createHandler={value.createHandler.bind(value)}/>
-            )}
-        </MyContext.Consumer>
-    </div>
   );
 }

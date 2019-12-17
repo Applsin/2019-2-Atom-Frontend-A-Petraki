@@ -1,0 +1,82 @@
+.messageWrap{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px 20px 10px;
+}
+
+.messageItem{
+	background-color: rgb(255, 160, 226);
+    display: flex;
+    flex-flow: column nowrap;
+    margin-right: 10px;
+    float: right;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+    max-width: 80%;
+    word-break: break-word;
+}
+
+
+.message{
+    background-color:  rgb(255, 160, 226);
+    padding: 4px 8px;
+    color: #fff;
+}
+
+
+.timestamp{
+    font-size: 10px;
+    padding: 4px 8px;
+    color: #999;
+    align-self: flex-end;
+}
+
+.attachments {
+    display: flex;
+    flex-flow: column;
+}
+
+.attachment {
+	width: 100%;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+	margin: 10px 0 10px 0;
+	overflow: hidden;
+}
+
+.geolocation {
+	background-image: url(https://image.flaticon.com/icons/svg/854/854878.svg);
+}
+
+.image {
+	height: 300px;
+	max-width: 100%;
+	min-width: 180px;
+	flex: auto;
+	flex-grow: 0;
+	flex-shrink: 0;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.audioStatus {
+	width: 30px;
+	height: 30px;
+	display: flex;
+	filter: invert(1);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+.audioPlay {
+	margin: 5px;
+	background-image: url(https://image.flaticon.com/icons/svg/149/149125.svg);
+}
+	
+.audioStop {
+	margin: 5px;
+	background-image: url(https://image.flaticon.com/icons/svg/149/149116.svg);
+}
